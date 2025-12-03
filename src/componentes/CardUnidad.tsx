@@ -132,25 +132,27 @@ const CardUnidad = ({ unidad }: Props) => {
         </Pressable>
       </View>
       {mostrarSeccion && (
-        <View style={{ marginLeft: 78 }}>
+        <View style={{ marginLeft: 74, marginRight: 24, borderColor: colores.borderNormal, padding: 4, borderWidth: 1, borderRadius: 8 }}>
           <Texto negrita tipo="normal" color={colores.primario}>
             Secciones:
           </Texto>
           <FlatList
-            style={{ flex: 1, marginLeft: 16, gap: 4 }}
+            style={{ flex: 1, marginHorizontal: 16, gap: 4 }}
             data={unidad.secciones}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View
                 style={{ flex: 1, marginTop: 8, flexDirection: "row", gap: 5 }}
               >
-                <FontAwesome6
-                  name="check-to-slot"
-                  size={16}
-                  color={colores.secundario}
-                />
+                <View style={{ paddingTop: 2 }}>
+                  <FontAwesome6
+                    name="check-to-slot"
+                    size={16}
+                    color={colores.secundario}
+                  />
+                </View>
                 <View style={{ flex: 1 }}>
-                  <Texto tipo="pequeno" color={colores.primario}>
+                  <Texto style={{textAlign:'justify'}} tipo="pequeno" color={colores.primario}>
                     {item.titulo}
                   </Texto>
                 </View>

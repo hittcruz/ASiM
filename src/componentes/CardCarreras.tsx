@@ -60,8 +60,13 @@ const CardCarreras = ({ nombre, id, onPress }: Props) => {
             flexDirection: "row",
           }}
         >
-          <View style={{ width: '75%' }}>
-            <Texto tipo="subtitulo" negrita color="#fff">
+          <View style={{ width: "75%" }}>
+            <Texto
+              style={{ textAlign: "auto" }}
+              tipo="subtitulo"
+              negrita
+              color="#fff"
+            >
               {nombre}
             </Texto>
           </View>

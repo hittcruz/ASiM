@@ -105,8 +105,8 @@ export const InicioPantalla = ({ navigation }: Props) => {
                 <Texto
                   style={{
                     position: "absolute",
-                    fontSize: 22,
-                    fontWeight: "500",
+                    fontSize: 19,
+                    fontWeight: "700",
                     bottom: 15,
                     left: 8,
                     right: 8,

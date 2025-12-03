@@ -34,6 +34,7 @@ const Texto = ({
         {
           color,
           fontFamily: negrita ? "OpenSans_700Bold" : "OpenSans_400Regular",
+          textAlign: "justify",
         },
         style,
       ]}

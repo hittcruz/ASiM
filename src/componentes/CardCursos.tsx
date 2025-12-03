@@ -33,25 +33,25 @@ const CardCursos = ({ tituloCurso, descripcion, id, navegar }: Props) => {
       <View style={{ flex: 1, paddingHorizontal: 8, backgroundColor: "#FFF" }}>
         <View
           style={{
-            height: 30,
             paddingHorizontal: 8,
+            paddingTop: 16,
             justifyContent: "center",
           }}
         >
-          <Texto tipo="subtitulo" negrita>
+          <Texto tipo="normal" negrita>
             {tituloCurso}
           </Texto>
         </View>
         <View style={{ flex: 1, flexDirection: "row" }}>
           <View style={{ flex: 4 / 5, padding: 8 }}>
-            <Texto tipo="normal" style={{ flexGrow: 2 }}>
+            <Texto tipo="subnormal" style={{ textAlign: "auto" }}>
               {descripcion}
             </Texto>
           </View>
           <View
             style={{
               flex: 2 / 5,
-              padding: 8,
+              // padding: 8,
               justifyContent: "center",
             }}
           >

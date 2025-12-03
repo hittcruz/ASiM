@@ -46,12 +46,12 @@ const CardTema = ({titulo, descripcion, path}:Props) => {
       </View>
       <View style={{ flex: 1, flexDirection: "column", gap: 8, padding: 8 }}>
         <View>
-          <Texto negrita tipo="subtitulo">
+          <Texto negrita tipo="normal">
             {titulo}
           </Texto>
         </View>
         <View>
-          <Texto style={{ flexWrap: "wrap" }} tipo="normal" color={colores.gris}>
+          <Texto style={{ flexWrap: "wrap", textAlign:'auto' }} tipo="subnormal" color={colores.gris}>
             {descripcion}
           </Texto>
         </View>
