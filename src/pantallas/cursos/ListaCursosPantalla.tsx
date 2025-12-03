@@ -28,8 +28,8 @@ export const ListaCursosPantalla = ({ navigation }: Props) => {
         >
           Cursos Disponibles
         </Texto>
-        <View style={{ paddingHorizontal: 16, gap: 20 }}>
           <FlatList
+            contentContainerStyle={{ paddingHorizontal: 8 , paddingBottom: 16 }}
             data={cursos}
             renderItem={({ item }) => (
               <Pressable onPress={() => {}}>
@@ -44,7 +44,6 @@ export const ListaCursosPantalla = ({ navigation }: Props) => {
             keyExtractor={(item) => item.id}
             ItemSeparatorComponent={() => <View style={{height: 15}} />}
           />
-        </View>
       </View>
     </>
   );
