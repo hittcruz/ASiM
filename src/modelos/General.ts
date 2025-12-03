@@ -17,6 +17,12 @@ export interface Carrera {
   id: string;
   nombre: string;
   descripcion?: string;
+  detalle?: string;
+  ciclos: Ciclo[];
+}
+export interface Ciclo {
+  id: string;
+  numero: string; // 1-7
   cursos: Curso[];
 }
 
@@ -24,20 +30,23 @@ export interface Curso {
   id: string;
   nombre: string;
   descripcion?: string;
-  imagenPath: string; // miniatura del curso
+  progreso?: number;
+  unidades: Unidad[];
+}
 
-  temas: Tema[];
-
-  progreso: number; // avance en %
+export interface Unidad {
+  id: string;
+  numero: string; // 1-3
+  nombre: string;
+  descripcion?: string;
+  secciones: Tema[];
 }
 
 export interface Tema {
   id: string;
   titulo: string;
-  iconoPath: string; // ícono pastel, empresarial
-
+  iconoPath?: string; // ícono pastel, empresarial
   completado: boolean;
-
   // opcionales para contenido
   videoUrl?: string;
   pdfUrl?: string;

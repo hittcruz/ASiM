@@ -33,8 +33,7 @@ const Texto = ({
         estilos[tipo],
         {
           color,
-          fontWeight: negrita ? "700" : "400",
-          fontFamily: negrita ? "OpenSans_400Regular" : "OpenSans_700Bold",
+          fontFamily: negrita ? "OpenSans_700Bold" : "OpenSans_400Regular",
         },
         style,
       ]}

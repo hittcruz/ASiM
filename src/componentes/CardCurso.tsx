@@ -1,14 +1,15 @@
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
-import { View } from "react-native";
+import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Pressable, View } from "react-native";
 import Texto from "./Texto";
 import { colores } from "../tema/colores";
 
 interface Props {
-    titulo: string;
-    descripcion: string;
-    path: 'calculator' | 'language';
+  titulo: string;
+  descripcion: string;
+  path: "calculator" | "language";
+  navegar: () => void;
 }
-const CardCurso = ({titulo, descripcion, path = 'calculator'}:Props) => {
+const CardCurso = ({ titulo, descripcion, path = "calculator", navegar }: Props) => {
   return (
     <View
       style={{
@@ -51,10 +52,31 @@ const CardCurso = ({titulo, descripcion, path = 'calculator'}:Props) => {
           </Texto>
         </View>
         <View>
-          <Texto style={{ flexWrap: "wrap" }} tipo="subnormal" color={colores.gris}>
+          <Texto
+            style={{ flexWrap: "wrap" }}
+            tipo="subnormal"
+            color={colores.gris}
+          >
             {descripcion}
           </Texto>
         </View>
+      </View>
+      <View>
+        <Pressable
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            paddingRight: 8,
+          }}
+          onPress={navegar}
+        >
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={24}
+            color={colores.primario}
+          />
+        </Pressable>
       </View>
     </View>
   );

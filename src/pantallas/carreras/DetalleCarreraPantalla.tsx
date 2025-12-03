@@ -6,8 +6,9 @@ import { colores } from "../../tema/colores";
 import { carreras } from "../../modelos/mockupCarreras";
 import { Ionicons } from "@expo/vector-icons";
 import Texto from "../../componentes/Texto";
-import Boton from "../../componentes/Boton";
 import CardCurso from "../../componentes/CardCurso";
+import Boton from "../../componentes/Boton";
+import ImageSlider from "../../componentes/ImageSlider";
 
 type Props = NativeStackScreenProps<CarreraStackParamList, "DetalleCarrera">;
 
@@ -17,7 +18,7 @@ export const DetalleCarreraPantalla = ({ route, navigation }: Props) => {
   const obtenerRuta = (id: string) => {
     switch (id) {
       case "c1":
-        return require("../../assets/imagenes/carrera-adminEmpresa.avif");
+        return require("../../assets/imagenes/carrera-adminEmpresa.jpg");
       case "c2":
         return require("../../assets/imagenes/carrera-contabilidad.jpg");
       case "c3":
@@ -29,6 +30,10 @@ export const DetalleCarreraPantalla = ({ route, navigation }: Props) => {
     }
   };
   const ruta = obtenerRuta(id);
+
+  const navegar = (id: string) => {
+    navigation.navigate("CiclosCarreras", { id });
+  };
 
   return (
     <>
@@ -61,73 +66,67 @@ export const DetalleCarreraPantalla = ({ route, navigation }: Props) => {
             </Pressable>
           </View>
         </View>
-        {carrera && (
-          <View
-            style={{
-              flex: 1,
-              marginBottom: 16,
-            }}
-          >
-            <FlatList
-              style={{ paddingHorizontal: 16, paddingTop: 16}}
-              data={carrera.cursos}
-              renderItem={({ item }) => (
-                <CardCurso
-                  titulo={item.nombre}
-                  descripcion={item.descripcion ?? ""}
-                  path={item.id === "curso1" ? "language" : "calculator"}
-                />
-              )}
-              ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-              ListHeaderComponent={
-                <View style={{paddingHorizontal: 8, paddingBottom: 8, gap: 10}}>
-                  <View
+        <ScrollView>
+          {carrera && (
+            <View
+              style={{
+                flex: 1,
+                paddingHorizontal: 16,
+                paddingBottom: 16,
+              }}
+            >
+              <View style={{ paddingHorizontal: 8, paddingBottom: 8, gap: 16 }}>
+                <View
+                  style={{
+                    height: 250,
+                    borderRadius: 12,
+                    overflow: "hidden",
+                    // iOS
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 0.15,
+                    shadowRadius: 4,
+                    // Android
+                    elevation: 5,
+                  }}
+                >
+                  <Image
+                    source={ruta}
                     style={{
-                      height: 250,
-                      borderRadius: 12,
-                      overflow: "hidden",
-                      // iOS
-                      shadowColor: "#000",
-                      shadowOffset: { width: 0, height: 4 },
-                      shadowOpacity: 0.15,
-                      shadowRadius: 4,
-                      // Android
-                      elevation: 5,
+                      width: "100%",
+                      height: "100%",
                     }}
+                  />
+                </View>
+                <View style={{ paddingTop: 16, gap: 4 }}>
+                  <Texto tipo="subtitulo" negrita color={colores.primario}>
+                    {carrera.nombre}
+                  </Texto>
+                  <Texto
+                    tipo="subnormal"
+                    style={{ flexWrap: "wrap" }}
+                    color={colores.gris}
                   >
-                    <Image
-                      source={ruta}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    />
-                  </View>
-                  <View style={{paddingTop: 16, gap: 10 }}>
-                    <Texto tipo="titulo" negrita color={colores.primario}>
-                      {carrera.nombre}
-                    </Texto>
-                    <Texto style={{ flexWrap: "wrap" }} color={colores.gris}>
-                      {carrera.descripcion}
-                    </Texto>
-                  </View>
-                  <Texto tipo="subtitulo">Cursos</Texto>
+                    {carrera.descripcion}
+                  </Texto>
                 </View>
-              }
-              ListFooterComponent={
-                <View style={{marginVertical: 16 }}>
-                  <View style={{ paddingHorizontal: 32 }}>
-                    <Boton
-                      variante="varB"
-                      titulo="Inscribirse"
-                      onPress={() => {}}
-                    />
-                  </View>
+                <View style={{ paddingTop: 16, gap: 8}}>
+                  <Texto tipo="subtitulo" negrita color={colores.primario}>
+                    Detalles de la carrera
+                  </Texto>
+                  <Texto tipo="subnormal" color={colores.primario}>
+                    {carrera.detalle ?? ''}
+                  </Texto>
                 </View>
-              }
-            />
-          </View>
-        )}
+                <Boton
+                  variante="varB"
+                  titulo="Ver Plan de Estudios"
+                  onPress={() => navegar(carrera.id)}
+                />
+              </View>
+            </View>
+          )}
+        </ScrollView>
       </View>
     </>
   );

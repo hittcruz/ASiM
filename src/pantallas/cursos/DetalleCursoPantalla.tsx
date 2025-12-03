@@ -17,7 +17,7 @@ const DetalleCursoPantalla = ({ route, navigation }: Props) => {
       ? require("../../assets/imagenes/curso_ingles.webp")
       : require("../../assets/imagenes/curso_mate.jpg");
 
-  const curso = estudiante.carrera?.cursos.find((item) => item.id === id);
+  const curso = estudiante.carrera?.ciclos[0].cursos.find((item) => item.id === id);
 
   return (
     <>
@@ -78,12 +78,12 @@ const DetalleCursoPantalla = ({ route, navigation }: Props) => {
             </View>
             <FlatList
               style={{padding: 16}}
-              data={curso.temas}
+              data={curso.unidades[0].secciones}
               renderItem={({ item }) => (
                 <CardTema
                   titulo={item.titulo}
                   descripcion={item.descripcion ?? ""}
-                  path={item.iconoPath}
+                  path={item?.iconoPath ?? ''}
                 />
               )}
               ItemSeparatorComponent={() => <View style={{height: 16}}/>}

@@ -9,7 +9,7 @@ import { estudiante } from "../../modelos/mockupEstudiante";
 
 type Props = NativeStackScreenProps<CursosStackParamList, "ListaCursos">;
 export const ListaCursosPantalla = ({ navigation }: Props) => {
-  const cursos = estudiante.carrera?.cursos ?? [];
+  const cursos = estudiante.carrera?.ciclos[0].cursos ?? [];
   const navegacion = (id: string) => {
     navigation.navigate("DetalleCurso", { id });
   };

@@ -1,4 +1,5 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
+import { Curso } from "../modelos/General";
 
 export type RootStackParamList = {
   Bienvenida: undefined;
@@ -21,4 +22,6 @@ export type CursosStackParamList = {
 export type CarreraStackParamList = {
   ListaCarreras: undefined;
   DetalleCarrera: { id: string };
+  CursoDesdeCarrera: { curso: Curso };
+  CiclosCarreras: { id: string};
 }

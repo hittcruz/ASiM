@@ -20,7 +20,7 @@ export const NavegacionPrincipal = () => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
           if (route.name === "InicioTab") {
-            iconName = focused ? "home" : "home-outline";
+            iconName = focused ? "person" : "person-outline";
           } else if (route.name === "CursosTab") {
             iconName = focused ? "book" : "book-outline";
           } else if (route.name === "CarrerasTab") {
@@ -52,14 +52,14 @@ export const NavegacionPrincipal = () => {
       })}
     >
       <Tab.Screen
-        name="InicioTab"
-        component={InicioPantalla}
-        options={{ tabBarLabel: "Inicio" }}
-      />
-      <Tab.Screen
         name="CarrerasTab"
         component={NavegacionCarreras}
         options={{ tabBarLabel: "Carreras" }}
+      />
+      <Tab.Screen
+        name="InicioTab"
+        component={InicioPantalla}
+        options={{ tabBarLabel: "Perfil" }}
       />
       <Tab.Screen
         name="CursosTab"

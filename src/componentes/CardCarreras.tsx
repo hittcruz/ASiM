@@ -12,7 +12,7 @@ const CardCarreras = ({ nombre, id, onPress }: Props) => {
   const obtenerRuta = (id: string) => {
     switch (id) {
       case "c1":
-        return require("../assets/imagenes/carrera-adminEmpresa.avif");
+        return require("../assets/imagenes/carrera-adminEmpresa.jpg");
       case "c2":
         return require("../assets/imagenes/carrera-contabilidad.jpg");
       case "c3":
